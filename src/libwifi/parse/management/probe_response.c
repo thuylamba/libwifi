@@ -48,8 +48,12 @@ int libwifi_parse_probe_resp(struct libwifi_bss *bss, struct libwifi_frame *fram
 
     if (frame->frame_control.flags.ordered) {
         memcpy(bss->bssid, frame->header.mgmt_ordered.addr3, 6);
+        memcpy(bss->receiver, frame->header.mgmt_ordered.addr1, 6);
+        memcpy(bss->transmitter, frame->header.mgmt_ordered.addr2, 6);
     } else {
         memcpy(bss->bssid, frame->header.mgmt_unordered.addr3, 6);
+        memcpy(bss->receiver, frame->header.mgmt_unordered.addr1, 6);
+        memcpy(bss->transmitter, frame->header.mgmt_unordered.addr2, 6);
     }
 
     // Fixed Parameters must be present
