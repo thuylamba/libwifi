@@ -308,6 +308,7 @@ union libwifi_mgmt_frame_header {
  * frame in libwifi.
  */
 struct libwifi_frame {
+    struct timeval ts;  // timestamp
     struct libwifi_radiotap_info *radiotap_info;
     uint16_t flags;
     struct libwifi_frame_ctrl frame_control;
